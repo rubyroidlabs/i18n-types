@@ -1,0 +1,13 @@
+{
+  "name": "i18n-ts",
+  "version": "1.0.0",
+  "description": "Generic TypeScript types for strongly-typed i18n.",
+  "repository": "https://github.com/rubyroidlabs/i18n-ts",
+  "author": "Pavel Pershko",
+  "main": "",
+  "types": "index.d.ts",
+  "private": true,
+  "peerDependencies": {
+    "typescript": "^4.4.4"
+  }
+}
