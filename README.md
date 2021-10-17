@@ -66,7 +66,7 @@ Create the generic type for getting options for translation key:
 ```ts
 import { KeyOptionsForLocale } from 'i18n-ts'
 
-type KeyOptions<GKey extends TranslationKey> = KeyOptionsForLocale<GKey, DefaultLocale>
+type KeyOptions<GKey extends TranslationKey> = KeyOptionsForLocale<DefaultLocale, GKey>
 ```
 
 Make translation function generic and use it like this:
@@ -99,6 +99,75 @@ const fr: GeneralLocale = {
 
 It checks whether locales have the same fields.
 
+## Full example with i18next
+
+```ts
+import { KeyOptionsForLocale, TranslationKeyForLocale } from 'i18n-ts'
+import { useTranslation as useI18nextTranslation } from 'react-i18next'
+import en from './locales/en'
+
+type DefaultLocale = typeof en.translation
+
+type TranslationKey = TranslationKeyForLocale<DefaultLocale>
+
+type KeyOptions<GKey extends TranslationKey> = KeyOptionsForLocale<
+  DefaultLocale,
+  GKey
+>
+
+const useTranslation = () => {
+  const i18next = useI18nextTranslation('translation')
+
+  const t = <GKey extends TranslationKey>(
+    key: GKey,
+    options?: KeyOptions<GKey>,
+  ): string => {
+    return i18next.t(key, options)
+  }
+
+  return { t }
+}
+
+export { useTranslation }
+```
+
+`./locales/en.ts`
+```ts
+export default {
+  translation: {
+    home: {
+      trackers: {
+        workouts: {
+          title: 'Workouts',
+          circuitNum: '{{num}} circuit',
+          exercisesCount_one: '{{count}} exercise',
+          exercisesCount_other: '{{count}} exercises',
+        },
+        meals: {
+          title: 'Meals',
+          proportionUnits: 'kcal',
+          parameters: {
+            carbohydrates: '{{gramms}}g C',
+            fats: '{{gramms}}g F',
+            proteins: '{{gramms}}g P',
+            numberComma: ',',
+          },
+        },
+        proportion: {
+          template: {
+            '0': '{{numerator}}',
+            '1': ' / {{denominator}}',
+            '2': ' {{units}}',
+          },
+        },
+      },
+    },
+  },
+} as const
+```
+
+*Root `translation` key is required by i18next.*
+
 ### If nothing works
 
-See the `/example` folder and try to copy files.
+Try to copy files from `/example` to your project and use them.
