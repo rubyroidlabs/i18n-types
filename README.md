@@ -168,6 +168,6 @@ export default {
 
 *Root `translation` key is required by i18next.*
 
-### If nothing works
+## If nothing works
 
 Try to copy files from `/example` to your project and use them.
