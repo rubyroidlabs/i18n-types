@@ -1,4 +1,5 @@
-import { ObjectPatternForConcatedKey, TranslationValueByKey } from './nested'
+import { TranslationKeyForLocale } from './locale'
+import { TranslationValueByKey } from './nested'
 import { PluralOptions } from './plural'
 
 type VoidOptionKey = undefined
@@ -19,7 +20,8 @@ type RawKeyOptions<GKey, Locale> = Options<
   TranslationValueByKey<GKey, Locale>
 >
 
-type KeyOptionsForLocale<GKey extends string, Locale extends ObjectPatternForConcatedKey<GKey>> =
+type KeyOptionsForLocale<Locale, GKey extends TranslationKeyForLocale<Locale>> =
+  // @ts-ignore
   TranslationValueByKey<GKey, Locale> extends string
     ? RawKeyOptions<GKey, Locale>
     : // @ts-ignore

@@ -7,6 +7,16 @@
 This solution works well in combination with i18next package.
 But can be easily adapted to other i18n engines.
 
+### Install
+
+```bash
+yarn add -D https://github.com/rubyroidlabs/i18n-ts
+```
+or
+```bash
+npm i --save-dev https://github.com/rubyroidlabs/i18n-ts
+```
+
 ### Typing for translation key
 
 You should store your translations in the TS objects. Like this:
