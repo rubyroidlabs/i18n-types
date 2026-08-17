@@ -1,11 +1,16 @@
 {
-  "name": "i18n-ts",
+  "name": "i18n-types",
   "version": "1.0.0",
   "description": "Generic TypeScript types for strongly-typed i18n.",
-  "repository": "https://github.com/rubyroidlabs/i18n-ts",
+  "repository": "https://github.com/rubyroidlabs/i18n-types",
   "author": "Pavel Pershko",
-  "main": "",
+  "license": "MIT",
+  "main": "index.d.ts",
   "types": "index.d.ts",
+  "files": [
+    "index.d.ts",
+    "lib"
+  ],
   "private": true,
   "peerDependencies": {
     "typescript": "^4.4.4"

@@ -1,4 +1,4 @@
-# i18n-ts
+# i18n-types
 
 > Generic TypeScript types for strongly-typed i18n.
 
@@ -10,11 +10,11 @@ But can be easily adapted to other i18n engines.
 ### Install
 
 ```bash
-yarn add -D https://github.com/rubyroidlabs/i18n-ts
+yarn add -D https://github.com/rubyroidlabs/i18n-types
 ```
 or
 ```bash
-npm i --save-dev https://github.com/rubyroidlabs/i18n-ts
+npm i --save-dev https://github.com/rubyroidlabs/i18n-types
 ```
 
 ### Typing for translation key
@@ -48,7 +48,7 @@ type DefaultLocale = typeof en
 
 And create the translation key type:
 ```ts
-import { TranslationKeyForLocale } from 'i18n-ts'
+import { TranslationKeyForLocale } from 'i18n-types'
 
 type TranslationKey = TranslationKeyForLocale<DefaultLocale>
 ```
@@ -64,7 +64,7 @@ const t = (key: TranslationKey, options?: any): string => {
 
 Create the generic type for getting options for translation key:
 ```ts
-import { KeyOptionsForLocale } from 'i18n-ts'
+import { KeyOptionsForLocale } from 'i18n-types'
 
 type KeyOptions<GKey extends TranslationKey> = KeyOptionsForLocale<DefaultLocale, GKey>
 ```
@@ -85,7 +85,7 @@ So, now translation options is validated by TS and you won't miss any option/par
 
 Create locale type from your default locale object like this:
 ```ts
-import { GeneralLocaleFromConcrete } from 'i18n-ts'
+import { GeneralLocaleFromConcrete } from 'i18n-types'
 
 type GeneralLocale = GeneralLocaleFromConcrete<TranslationObject>
 ```
@@ -102,7 +102,7 @@ It checks whether locales have the same fields.
 ## Full example with i18next
 
 ```ts
-import { KeyOptionsForLocale, TranslationKeyForLocale } from 'i18n-ts'
+import { KeyOptionsForLocale, TranslationKeyForLocale } from 'i18n-types'
 import { useTranslation as useI18nextTranslation } from 'react-i18next'
 import en from './locales/en'
 
@@ -135,32 +135,19 @@ export { useTranslation }
 ```ts
 export default {
   translation: {
+    appName: 'My App',
     home: {
-      trackers: {
-        workouts: {
-          title: 'Workouts',
-          circuitNum: '{{num}} circuit',
-          exercisesCount_one: '{{count}} exercise',
-          exercisesCount_other: '{{count}} exercises',
-        },
-        meals: {
-          title: 'Meals',
-          proportionUnits: 'kcal',
-          parameters: {
-            carbohydrates: '{{gramms}}g C',
-            fats: '{{gramms}}g F',
-            proteins: '{{gramms}}g P',
-            numberComma: ',',
-          },
-        },
-        proportion: {
-          template: {
-            '0': '{{numerator}}',
-            '1': ' / {{denominator}}',
-            '2': ' {{units}}',
-          },
-        },
-      },
+      title: 'Home',
+      description: 'Welcome to the home page',
+      greeting: 'Hi, {{ username }}!',
+    },
+    menu: {
+      itemsCount_one: 'There is {{ count }} item',
+      itemsCount_other: 'There are {{ count }} items',
+    },
+    settings: {
+      title: 'Settings',
+      language: 'Language',
     },
   },
 } as const
@@ -171,3 +158,7 @@ export default {
 ## If nothing works
 
 Try to copy files from `/example` to your project and use them.
+
+## License
+
+MIT. See [LICENSE](./LICENSE).

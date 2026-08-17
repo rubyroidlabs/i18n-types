@@ -1,22 +1,18 @@
 export default {
   translation: {
+    appName: 'My App',
     home: {
-      challengeBanner: {
-        watchVideo: 'Watch video',
-      },
+      title: 'Home',
+      description: 'Welcome to the home page',
+      greeting: 'Hi, {{ username }}!',
     },
-    datetime: {
-      days: {
-        short: {
-          sunday: 'Sun',
-          monday: 'Mon',
-          tuesday: 'Tue',
-          wednesday: 'Wed',
-          thursday: 'Thu',
-          friday: 'Fri',
-          saturday: 'Sat',
-        },
-      },
+    menu: {
+      itemsCount_one: 'There is {{ count }} item',
+      itemsCount_other: 'There are {{ count }} items',
+    },
+    settings: {
+      title: 'Settings',
+      language: 'Language',
     },
   },
 } as const
